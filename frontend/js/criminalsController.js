@@ -1,9 +1,9 @@
 angular.module('InfamousCriminals')
 .controller('CriminalsController', CriminalsController);
 
-CriminalsController.$inject = ['$http', '$scope'];
+CriminalsController.$inject = ['$http', '$scope', '$state'];
 
-function CriminalsController($http, $scope){
+function CriminalsController($http, $scope, $state){
   $scope.all = [];
   $scope.addCriminal = addCriminal;
   $scope.newCriminal = {};
@@ -24,6 +24,7 @@ function CriminalsController($http, $scope){
       .post('http://localhost:3000/criminals', $scope.newCriminal)
       .then(function(response){
         getCriminals();
+        $state.go('home');
     });
     $scope.newCriminal = {};
   }

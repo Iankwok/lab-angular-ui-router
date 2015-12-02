@@ -1,0 +1,17 @@
+ <h1>Infamous Criminals</h1>
+  <section ng-controller='CriminalsController'>
+
+<nav class='tabs'>
+  <a ui-sref-active="active" ui-sref="home">All Criminals</a>
+  <a ui-sref-active="active" ui-sref="new">New Criminal</a>
+  <a ui-sref-active="active" ui-sref="about">About</a>
+</nav>
+
+    <ul id="criminals">
+      <li ng-repeat="criminal in all" data-id="{{criminal._id}}">
+        <strong>{{criminal.name}}</strong> <em>{{criminal.location}}</em> <span class='status {{criminal.status | lowercase }}'>{{criminal.status | uppercase}}</span>
+        <button class='delete' ng-click="deleteCriminal(criminal)">X</button>
+      </li>
+    </ul>
+
+  </section>
